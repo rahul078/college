@@ -1,0 +1,48 @@
+create database college;
+use college;
+create table teacher(name varchar(15) primary key ,email varchar(30) not null,password varchar(25),dept varchar(3));
+create table student(usn varchar(15) primary key,name varchar(20),password varchar(25));
+create table subject_total(sub_name varchar(50) primary key,teacher_name varchar(15) references teacher(name));
+create table undertaken_sub(sub_name varchar(50) references subject_total(sub_name),student_usn varchar(15) references student(usn),marks int);
+create table comment(usn varchar(15) references student(usn),description varchar(100));
+
+insert into college.teacher values('neha','neha@gmail.com','neha','MCA');
+insert into college.teacher values('ashwini','ashwini@gmail.com','ashwini','MCA');
+insert into college.teacher values('varsha','varsha@gmail.com','varsha','MBA');
+insert into college.teacher values('Daya','Daya@gmail.com','Daya''MCA');
+insert into college.teacher values('Sachin','Sachin@gmail.com','Sachin','MBA');
+
+insert into college.student values('1DA15CS094','User 1','qwerty');
+insert into college.student values('1DA15CS095','User 2','qwerty');
+insert into college.student values('1DA15CS096','User 3','qwerty');
+
+insert into college.subject_total values('Object Oriented Programming with C++','neha');
+insert into college.subject_total values('Computer Organization','neha');
+insert into college.subject_total values('Unix and Shell Programming','neha');
+insert into college.subject_total values('Unix Shell Programming Laboratory','neha');
+insert into college.subject_total values('Web Technologies','ashwini');
+insert into college.subject_total values('Web Technologies Laboratory','ashwini');
+insert into college.subject_total values('Computer Networks','daya');
+insert into college.subject_total values('Computer Networks Lab','daya');
+
+insert into college.undertaken_sub values('Computer Organization','1DA15CS094',22);
+insert into college.undertaken_sub values('Computer Organization','1DA15CS095',25);
+insert into college.undertaken_sub values('Computer Organization','1DA15CS096',20);
+
+insert into college.undertaken_sub values('Unix and Shell Programming','1DA15CS094',23);
+insert into college.undertaken_sub values('Unix and Shell Programming','1DA15CS095',22);
+insert into college.undertaken_sub values('Unix and Shell Programming','1DA15CS096',24);
+
+insert into college.undertaken_sub values('Unix Shell Programming Laboratory','1DA15CS094',23);
+insert into college.undertaken_sub values('Unix Shell Programming Laboratory','1DA15CS095',24);
+
+insert into college.undertaken_sub values('Web Technologies','1DA15CS094',25);
+insert into college.undertaken_sub values('Web Technologies','1DA15CS095',21);
+insert into college.undertaken_sub values('Web Technologies','1DA15CS096',22);
+
+insert into college.undertaken_sub values('Computer Networks','1DA15CS094',23);
+insert into college.undertaken_sub values('Computer Networks','1DA15CS095',22);
+insert into college.undertaken_sub values('Computer Networks','1DA15CS096',21);
+
+insert into college.undertaken_sub values('Computer Networks Lab','1DA15CS095',21);
+insert into college.undertaken_sub values('Computer Networks Lab','1DA15CS096',24);
